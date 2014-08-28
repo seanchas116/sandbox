@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "watchify -e src/main.js -o public/bundle.js"
+    "watch": "gulp --require coffee-script watch"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "browserify": "^5.10.1",
     "coffee-script": "^1.8.0",
