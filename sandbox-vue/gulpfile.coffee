@@ -1,10 +1,7 @@
 gulp = require 'gulp'
-coffee = require 'gulp-coffee'
 source = require 'vinyl-source-stream'
 browserify = require 'browserify'
 exorcist = require 'exorcist'
-
-sourcemaps = require 'gulp-sourcemaps'
 
 path = 'src/app.coffee'
 
