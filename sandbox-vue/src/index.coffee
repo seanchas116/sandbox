@@ -4,4 +4,3 @@ new Vue
   el: '#test',
   data:
     title: 'Hello'
-

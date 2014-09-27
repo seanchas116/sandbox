@@ -1,20 +1,23 @@
 gulp = require 'gulp'
 source = require 'vinyl-source-stream'
 browserify = require 'browserify'
-exorcist = require 'exorcist'
-
-path = 'src/app.coffee'
+uglify = require 'gulp-uglify'
+sourcemaps = require 'gulp-sourcemaps'
+streamify = require 'gulp-streamify'
 
 gulp.task 'compile', ->
   browserify
-      entries: ['./src/app.coffee']
-      extensions: ['.coffee','.jade', '.js']
+      entries: ['./src/index.coffee']
+      extensions: ['.coffee', '.js']
       debug: true
     .transform 'coffeeify'
     .bundle()
-    .pipe exorcist 'public/bundle.js.map'
     .pipe source 'bundle.js'
-    .pipe gulp.dest 'public'
+    .pipe sourcemaps.init
+      loadMaps: true
+    .pipe streamify uglify()
+    .pipe sourcemaps.write()
+    .pipe gulp.dest 'build'
 
 gulp.task 'watch', ->
   gulp.watch path, ['compile']
